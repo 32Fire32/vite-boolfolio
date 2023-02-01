@@ -23,7 +23,7 @@ export default {
 <template>
   <h4>Lista dei progetti</h4>
   <div class="row">
-    <div class="col-md-4" v-for="project in projects">
+    <div class="col-md-4 gy-2" v-for="project in projects">
       <ProjectCard :data="project" />
     </div>
   </div>

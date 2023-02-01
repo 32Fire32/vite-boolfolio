@@ -1,0 +1,34 @@
+<script>
+export default {
+  name: "ProjectCard",
+  props: {
+    data: Object,
+  },
+};
+</script>
+
+<template>
+  <div class="card p-2">
+    <img
+      v-if="data.image_url"
+      :src="data.image_url"
+      class="card-img-top"
+      :alt="data.name_project"
+    />
+    <div class="card-body">
+      <h5 class="card-title">{{ data.name_project }}</h5>
+      <p class="card-text">
+        {{ data.summary }}
+      </p>
+      <a href="#" class="btn btn-primary">Go in detail</a>
+    </div>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+img {
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+}
+</style>
