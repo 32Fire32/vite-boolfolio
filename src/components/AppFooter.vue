@@ -12,8 +12,12 @@ export default {
 
 <style lang="scss" scoped>
 footer {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #282828;
   color: white;
-  padding: 20px;
-  background-color: black;
+  height: var(--footer-height);
 }
 </style>

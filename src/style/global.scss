@@ -2,3 +2,8 @@
 IMPORT BOOTSTRAP
 ----------------*/
 @import "/node_modules/bootstrap/scss/bootstrap";
+
+body {
+  height: 100vh;
+  background-color: darkgrey;
+}

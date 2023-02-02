@@ -17,14 +17,14 @@ export default {
     />
     <div class="card-body">
       <h5 class="card-title">{{ data.name_project }}</h5>
-      <span> <strong>Breve Descrizione:</strong> </span>
-      <p class="card-text">
+      <span class="card-text"
+        ><strong>Breve Descrizione:</strong>
         {{ data.summary }}
-      </p>
+      </span>
       <span v-if="data.type"
         ><strong>Tipologia:</strong> {{ data.type.name }}</span
       >
-      <div class="d-flex align-items-center flex-wrap">
+      <div>
         <span> <strong>Tecnologia utilizzata:</strong> </span>
         <span class="mx-1" v-for="technology in data.technologies">
           /{{ technology.name }}/
@@ -40,6 +40,14 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.card {
+  min-height: 471px;
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
 img {
   height: 200px;
   object-fit: cover;

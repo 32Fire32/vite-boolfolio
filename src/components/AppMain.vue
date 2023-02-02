@@ -10,4 +10,9 @@ export default {
   </section>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+section {
+  overflow-y: auto;
+  height: calc(100vh - (var(--header-height) + var(--footer-height)));
+}
+</style>
