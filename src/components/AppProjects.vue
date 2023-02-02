@@ -1,5 +1,6 @@
 <script>
-import axios from "axios";
+import { store } from "../../store";
+
 import ProjectCard from "./ProjectCard.vue";
 
 export default {
@@ -9,21 +10,15 @@ export default {
   },
   data() {
     return {
-      projects: [],
+      store,
     };
-  },
-  created() {
-    axios.get("http://127.0.0.1:8000/api/projects").then((response) => {
-      this.projects = response.data;
-    });
   },
 };
 </script>
 
 <template>
-  <h4>Lista dei progetti</h4>
   <div class="row">
-    <div class="col-md-4 gy-2" v-for="project in projects">
+    <div class="col-md-4 gy-2" v-for="project in store.projects">
       <ProjectCard :data="project" />
     </div>
   </div>

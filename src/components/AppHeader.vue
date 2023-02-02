@@ -5,9 +5,29 @@ export default {
 </script>
 
 <template>
-  <header>
-    <h3>Qui ci va l'header</h3>
+  <header class="d-flex align-items-center justify-content-between">
+    <h3>Logo Boolfolio</h3>
+    <nav>
+      <ul class="d-flex align-items-center justify-content-between">
+        <li><router-link :to="{ name: 'homepage' }">Home</router-link></li>
+        <li><router-link :to="{ name: 'about' }">About</router-link></li>
+        <li><router-link :to="{ name: 'contacts' }">Contacts</router-link></li>
+      </ul>
+    </nav>
   </header>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+header {
+  color: white;
+  padding: 20px;
+  background-color: black;
+  h3 {
+    margin-bottom: 0 !important;
+  }
+}
+ul {
+  list-style: none;
+  margin-bottom: 0 !important;
+}
+</style>

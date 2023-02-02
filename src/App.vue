@@ -1,4 +1,7 @@
 <script>
+import axios from "axios";
+import { store } from "../store";
+
 import AppHeader from "./components/AppHeader.vue";
 import AppMain from "./components/AppMain.vue";
 import AppFooter from "./components/AppFooter.vue";
@@ -8,15 +11,25 @@ export default {
     AppMain,
     AppFooter,
   },
+  data() {
+    return {
+      store,
+    };
+  },
+  created() {
+    axios.get("http://127.0.0.1:8000/api/projects").then((response) => {
+      this.store.projects = response.data;
+    });
+  },
 };
 </script>
 
 <template>
+  <AppHeader />
   <div class="container">
-    <AppHeader />
     <AppMain />
-    <AppFooter />
   </div>
+  <AppFooter />
 </template>
 
 <style lang="scss">
