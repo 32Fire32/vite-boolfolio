@@ -9,9 +9,15 @@ export default {
     <h3>Logo Boolfolio</h3>
     <nav>
       <ul class="d-flex align-items-center justify-content-between">
-        <li><router-link :to="{ name: 'homepage' }">Home</router-link></li>
-        <li><router-link :to="{ name: 'about' }">About</router-link></li>
-        <li><router-link :to="{ name: 'contacts' }">Contacts</router-link></li>
+        <li class="ms-2">
+          <router-link :to="{ name: 'homepage' }">Home</router-link>
+        </li>
+        <li class="ms-2">
+          <router-link :to="{ name: 'about' }">About</router-link>
+        </li>
+        <li class="ms-2">
+          <router-link :to="{ name: 'contacts' }">Contacts</router-link>
+        </li>
       </ul>
     </nav>
   </header>
