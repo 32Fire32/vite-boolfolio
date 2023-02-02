@@ -30,7 +30,11 @@ export default {
           /{{ technology.name }}/
         </span>
       </div>
-      <a href="#" class="my-2 btn btn-primary">Go in detail</a>
+      <router-link
+        :to="{ name: 'single-project', params: { slug: data.slug } }"
+        class="my-2 btn btn-primary"
+        >Go in detail</router-link
+      >
     </div>
   </div>
 </template>

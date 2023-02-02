@@ -1,12 +1,12 @@
 <script>
 export default {
-  name: "AppMain",
+  name: "Error404",
 };
 </script>
 
 <template>
   <section>
-    <router-view></router-view>
+    <h1>Questa pagina non esiste</h1>
   </section>
 </template>
 

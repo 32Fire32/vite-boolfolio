@@ -6,7 +6,9 @@ export default {
 
 <template>
   <header class="d-flex align-items-center justify-content-between">
-    <h3>Logo Boolfolio</h3>
+    <h3>
+      <router-link :to="{ name: 'homepage' }">Logo Boolfolio</router-link>
+    </h3>
     <nav>
       <ul class="d-flex align-items-center justify-content-between">
         <li class="ms-2">

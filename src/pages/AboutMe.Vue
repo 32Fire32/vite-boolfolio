@@ -1,5 +1,4 @@
 <script>
-import AboutMe from "./AboutMe.vue";
 export default {
   name: "AboutMe",
 };
