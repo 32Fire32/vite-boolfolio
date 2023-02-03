@@ -10,4 +10,9 @@ export default {
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.content {
+  overflow-y: auto;
+  height: calc(100vh - (var(--header-height) + var(--footer-height)));
+}
+</style>

@@ -17,7 +17,7 @@ export default {
 </script>
 
 <template>
-  <div class="row">
+  <div class="row my-3">
     <div class="col-md-4 gy-2" v-for="project in store.projects">
       <ProjectCard :data="project" />
     </div>
