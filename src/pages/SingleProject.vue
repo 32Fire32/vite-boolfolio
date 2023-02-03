@@ -18,8 +18,8 @@ export default {
           content: this.newComment,
         })
         .then((response) => {
-          document.getElementById("comment").innerHTML = response.data;
           this.comments.push(response.data);
+          document.getElementById("comment").innerHTML = response.data;
         })
         .catch((err) => {
           if (err.response.status === 404) {
@@ -85,9 +85,16 @@ export default {
       />
       <input type="submit" value="Invia" />
     </form>
-    <div v-for="(comment, index) in project.comments" id="comment">
-      {{ project.comments[index].content }}
-    </div>
+    <ul>
+      <li
+        v-for="(comment, index) in project.comments"
+        id="comment"
+        class="list-unstyled"
+      >
+        <strong>{{ project.comments[index].name }}</strong> scrive:
+        <em>{{ project.comments[index].content }}</em>
+      </li>
+    </ul>
   </div>
 </template>
 
