@@ -5,6 +5,7 @@ import { store } from "../store";
 import AppHeader from "./components/AppHeader.vue";
 import AppMain from "./components/AppMain.vue";
 import AppFooter from "./components/AppFooter.vue";
+
 export default {
   components: {
     AppHeader,
@@ -17,7 +18,7 @@ export default {
     };
   },
   created() {
-    axios.get("http://127.0.0.1:8000/api/projects").then((response) => {
+    axios.get(`${this.store.api_url}/projects`).then((response) => {
       this.store.projects = response.data;
     });
   },

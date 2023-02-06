@@ -1,10 +1,12 @@
 <script>
 import axios from "axios";
+import { store } from "../../store";
 
 export default {
   name: "SingleProject",
   data() {
     return {
+      store,
       project: "",
       commentData: {
         name: "",
@@ -15,7 +17,7 @@ export default {
   methods: {
     addNewComment() {
       axios
-        .post(`http://127.0.0.1:8000/api/comments/${this.project.id}`, {
+        .post(`${this.store.api_url}/comments/${this.project.id}`, {
           name: this.commentData.name,
           content: this.commentData.content,
         })
@@ -31,7 +33,7 @@ export default {
   },
   created() {
     axios
-      .get(`http://127.0.0.1:8000/api/projects/${this.$route.params.slug}`)
+      .get(`${this.store.api_url}/projects/${this.$route.params.slug}`)
       .then((response) => {
         this.project = response.data;
       })
