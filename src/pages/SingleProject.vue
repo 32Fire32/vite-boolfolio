@@ -6,20 +6,21 @@ export default {
   data() {
     return {
       project: "",
-      newComment: "",
-      newName: "",
+      commentData: {
+        name: "",
+        content: "",
+      },
     };
   },
   methods: {
     addNewComment() {
       axios
         .post(`http://127.0.0.1:8000/api/comments/${this.project.id}`, {
-          name: this.newName,
-          content: this.newComment,
+          name: this.commentData.name,
+          content: this.commentData.content,
         })
         .then((response) => {
-          this.comments.push(response.data);
-          document.getElementById("comment").innerHTML = response.data;
+          this.project.comments.push(response.data);
         })
         .catch((err) => {
           if (err.response.status === 404) {
@@ -63,27 +64,41 @@ export default {
         >
       </div>
 
-      <div>
-        <span> <strong>Tecnologia utilizzata:</strong> </span>
+      <div v-if="project.technologies.length > 0">
+        <span>
+          <strong>Tecnologia utilizzata:</strong>
+        </span>
         <span class="mx-1" v-for="technology in project.technologies">
           /{{ technology.name }}/
         </span>
       </div>
     </div>
+    <!-- <div v-if=""> -->
     <form action="" @submit.prevent="addNewComment">
-      <input
-        type="text"
-        name="name"
-        v-model="newName"
-        placeholder="Inserisci il nome"
-      />
-      <input
-        type="text"
-        name="content"
-        v-model="newComment"
-        placeholder="Inserisci il commento"
-      />
-      <input type="submit" value="Invia" />
+      <div class="d-flex my-3 align-items-end justify-content-between">
+        <div>
+          <label class="form-label" for="name">Nome: </label>
+          <input
+            class="form-control"
+            type="text"
+            id="name"
+            v-model="commentData.name"
+            placeholder="Inserisci il nome"
+          />
+        </div>
+        <div class="ms-2">
+          <label class="form-label" for="content">Commento:</label>
+          <input
+            class="form-control"
+            type="text"
+            id="content"
+            v-model="commentData.content"
+            placeholder="Inserisci il commento"
+            required
+          />
+        </div>
+        <input class="btn btn-primary ms-2" type="submit" value="Invia" />
+      </div>
     </form>
     <ul>
       <li
@@ -91,11 +106,13 @@ export default {
         id="comment"
         class="list-unstyled"
       >
-        <strong>{{ project.comments[index].name }}</strong> scrive:
-        <em>{{ project.comments[index].content }}</em>
+        <strong v-if="comment.name">{{ comment.name }}</strong
+        ><strong v-else>Anonimo</strong> scrive:
+        <em>{{ comment.content }}</em>
       </li>
     </ul>
   </div>
+  <!-- </div> -->
 </template>
 
 <style lang="scss" scoped>
