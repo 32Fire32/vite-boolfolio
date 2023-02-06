@@ -8,6 +8,8 @@ export default {
     return {
       store,
       project: "",
+      createdComment: false,
+      commentError: false,
       commentData: {
         name: "",
         content: "",
@@ -23,10 +25,17 @@ export default {
         })
         .then((response) => {
           this.project.comments.push(response.data);
+          (this.commentData.name = ""), (this.commentData.content = "");
+          this.createdComment = true;
+          if (this.commentError) {
+            this.commentError = false;
+          }
         })
         .catch((err) => {
-          if (err.response.status === 404) {
-            this.$router.push({ name: "error-404" });
+          this.commentError = err.response.data;
+
+          if (this.createdComment) {
+            this.createdComment = false;
           }
         });
     },
@@ -113,7 +122,21 @@ export default {
         <em>{{ comment.content }}</em>
       </li>
     </ul>
+    <div class="alert">
+      <div class="mt-3 alert alert-success" role="alert" v-if="createdComment">
+        Commento creato con successo
+      </div>
+      <div class="mt-3 alert alert-danger" role="alert" v-if="commentError">
+        <div>Errore nella creazione del commento</div>
+        <ul>
+          <li v-for="errors in commentError.errors">
+            <div v-for="error in errors">{{ error }}</div>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
+
   <!-- </div> -->
 </template>
 
