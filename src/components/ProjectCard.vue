@@ -33,6 +33,13 @@ export default {
 <style lang="scss" scoped>
 .card {
   min-height: 406px;
+  background-color: gray;
+  box-shadow: 10px 10px 10px 10px;
+  transition: all 1s;
+}
+.card:hover {
+  box-shadow: 0px 0px 0px 0px;
+  transform: translate(10px);
 }
 .card-body {
   display: flex;

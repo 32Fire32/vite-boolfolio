@@ -142,8 +142,10 @@ export default {
 
 <style lang="scss" scoped>
 .card {
+  background-color: gray;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 10px 10px 10px 10px;
 }
 </style>
