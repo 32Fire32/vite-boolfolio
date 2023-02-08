@@ -39,6 +39,18 @@ export default {
           }
         });
     },
+    getProjects() {
+      axios
+        .get(`${this.store.api_url}/projects/${this.$route.params.slug}`)
+        .then((response) => {
+          this.project = response.data;
+        })
+        .catch((err) => {
+          if (err.response.status === 404) {
+            this.$router.push({ name: "error-404" });
+          }
+        });
+    },
   },
   created() {
     axios
@@ -51,6 +63,15 @@ export default {
           this.$router.push({ name: "error-404" });
         }
       });
+  },
+  created() {
+    this.getProjects();
+    this.$watch(
+      () => this.$route.params,
+      (toParams, previousParams) => {
+        this.getProjects();
+      }
+    );
   },
 };
 </script>
@@ -85,7 +106,7 @@ export default {
       </div>
     </div>
     <!-- <div v-if=""> -->
-    <form action="" @submit.prevent="addNewComment">
+    <form action="" @submit.prevent="addNewComment()">
       <div class="d-flex my-3 align-items-end justify-content-between">
         <div>
           <label class="form-label" for="name">Nome: </label>
@@ -142,10 +163,10 @@ export default {
 
 <style lang="scss" scoped>
 .card {
-  background-color: gray;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: gray;
   box-shadow: 10px 10px 10px 10px;
 }
 </style>
