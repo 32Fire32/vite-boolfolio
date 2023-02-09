@@ -24,7 +24,9 @@ export default {
           email: this.formData.email,
         })
         .then((response) => {
-          console.log(res.data);
+          this.formData.name = "";
+          this.formData.content = "";
+          this.formData.email = "";
         });
     },
   },

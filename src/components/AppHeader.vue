@@ -15,6 +15,9 @@ export default {
           <router-link :to="{ name: 'homepage' }">HOME</router-link>
         </li>
         <li>
+          <router-link :to="{ name: 'list-types' }">Tipologie</router-link>
+        </li>
+        <li>
           <router-link :to="{ name: 'about' }">ABOUT</router-link>
         </li>
         <li>

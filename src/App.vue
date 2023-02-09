@@ -21,6 +21,9 @@ export default {
     axios.get(`${this.store.api_url}/projects`).then((response) => {
       this.store.projects = response.data;
     });
+    axios.get(`${this.store.api_url}/types`).then((response) => {
+      this.store.types = response.data;
+    });
   },
 };
 </script>
